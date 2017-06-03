@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Задача комивояжера</title>
+
+        <!--Style section-->
+        <link href="External/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
+    </head>
+    <body>
+        <a id="about-btn" data-toggle="modal" data-target="#aboutModal" href="#"><span class="glyphicon glyphicon-question-sign"></span></a>
+
+        <div id="aboutModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" type="button" data-dismiss="modal">×</button>
+                        <h4 class="modal-title">О сайте</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <p>
+                                    На сайте представлена визуализация работы алгоритмов
+                                    решения задачи коммивояжера, такие, как:
+                                    решение, с использованием динамического программирования;
+                                    жадный алгоритм; метод градиентного спуска (2-opt);
+                                    2-приближлнный алгоритм, с использованием минимального остовного дерева.
+                                </p>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <p>
+                                    Для просмотра физуализации нужно создать граф,
+                                    добавляя случайные вершины или кликая по полю.
+                                    Можно удалить вершину, кликнув по ней.
+                                    Далее, выбрать интересующий вас алгоритм и нажать
+                                    на стрелочку в правом верхнем углу. Доступна как
+                                    пошаговая визуализация, так и проигрывание всего алгоритма за раз.
+                                    После старта визуализации, изменения графа или
+                                    метода решения - блокируются. Для именения параметров
+                                    Назмите кнопку "Обновить".
+                                </p>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <p>
+                                    В граф можно добавить до 40 вершин.
+                                    Однако решение с динамикой может быть
+                                    запущено только для 7 и менее.
+                                </p>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <p>
+                                    Благодарю за внимание.
+                                    Вы так же можете посмотреть мою визуализацию
+                                    персистентной очереди на сайте persistentqueue.gear.host
+                                </p>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="modal-footer"><button class="btn btn-default" type="button" data-dismiss="modal">Закрыть</button></div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="content">
+            <div class="col left-panel">
+                <div class="left-title">
+                    <p>Методы решения:</p>
+                </div>
+                <div class="methods">
+                    <ul>
+                        <li onclick="select_method(this, 'greedy')"><p class="method border-top selected-method">Жадный</p></li>
+                        <li onclick="select_method(this, 'dynamic')"><p class="method">Динамика</p></li>
+                        <li onclick="select_method(this, 'gradient')"><p class="method">Градиентный спуск</p></li>
+                        <li onclick="select_method(this, 'simulation')"><p class="method">Градиентный спуск (показывать все)</p></li>
+                        <li onclick="select_method(this, 'two-opt')"><p class="method">2-приближонный</p></li>
+                        <li onclick="select_method(this, 'random')"><p class="method">Случайный</p></li>
+                    </ul>
+                </div>
+                <div class="left-title">
+                    <p>Граф:</p>
+                </div>
+                <div class="info">
+                    <p><span class="glyphicon glyphicon-hand-right"></span>&emsp;Вы можете добавлять вершины, кликнув по полю.</p>
+                </div>
+                <div class="left-block">
+                    <p>Случайные вершины</p>
+                    <input id="random-to-add" type="number" class="form-control" min="0" max="16" />
+                    <div class="btn btn-default" onclick="add_random()">Добавить</div>
+                </div>
+                <div class="left-block">
+                    <div class="btn btn-default btn-block" onclick="clear_all()">Обновить</div>
+                </div>
+                <div class="info margin_top">
+                    <p><span class="glyphicon glyphicon-info-sign"></span>&emsp;Чтобы изменить граф или метод решения, после запуска визуализации, нажмите кнопку "обновить"</p>
+                </div>
+            </div>
+
+            <div class="col main-part">
+                <div class="top-panel">
+                    <div class="inline duration"> 
+                        <span>slow</span>
+                        <input id="duration-inp"  type="range" min="70" max="700" value="600" onchange="change_duration()" />
+                        <span>fast</span>
+                    </div>
+
+                    <div class="float-right to-bottom">
+                        <div class="step-control">
+                            <div class="btn btn-default back-step" onclick="step_back_click()"><span class="glyphicon glyphicon-step-backward"></span></div>
+                        </div>
+                        <div class="step-control">
+                            <div class="btn btn-default front-step" onclick="play_back()"><span class="glyphicon glyphicon-backward"></span></div>
+                        </div>
+                        <div class="step-control">
+                            <div class="btn btn-default front-step" onclick="play()"><span class="glyphicon glyphicon-forward"></span></div>
+                        </div>
+                        <div class="step-control">
+                            <div class="btn btn-default front-step" onclick="step_front_click()"><span class="glyphicon glyphicon-step-forward"></span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <div class="map">
+                        <svg id="canvas">
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+        </footer>
+
+        <!--Scripts section-->
+        <script type="text/javascript" src="External/Jqery/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="External/Bootstrap/js/bootstrap.min.js"></script>
+        <script  type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+        <script type="text/javascript" src="logic.js"></script>
+    </body>
+</html>

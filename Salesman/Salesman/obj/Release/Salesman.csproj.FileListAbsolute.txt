@@ -1,0 +1,6 @@
+E:\programs\c++ programs\ACM\ACM\ADVANCE\Курсовая\Salesman\Salesman\bin\Release\Salesman.exe.config
+E:\programs\c++ programs\ACM\ACM\ADVANCE\Курсовая\Salesman\Salesman\bin\Release\Salesman.exe
+E:\programs\c++ programs\ACM\ACM\ADVANCE\Курсовая\Salesman\Salesman\bin\Release\Salesman.pdb
+E:\programs\c++ programs\ACM\ACM\ADVANCE\Курсовая\Salesman\Salesman\obj\Release\Salesman.exe
+E:\programs\c++ programs\ACM\ACM\ADVANCE\Курсовая\Salesman\Salesman\obj\Release\Salesman.pdb
+E:\programs\c++ programs\ACM\ACM\ADVANCE\Курсовая\Salesman\Salesman\obj\Release\Salesman.csprojResolveAssemblyReference.cache
