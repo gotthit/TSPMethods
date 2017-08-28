@@ -46,6 +46,7 @@
     <Compile Include="SalesmanSolvers\ApproximateBBSolver.cs" />
     <Compile Include="SalesmanSolvers\ApproximateMetricSolver.cs" />
     <Compile Include="SalesmanSolvers\Crutch32Solver.cs" />
+    <Compile Include="SalesmanSolvers\GotthitSolver.cs" />
     <Compile Include="SalesmanSolvers\MixedOptSolver.cs" />
     <Compile Include="SalesmanSolvers\RandomSolver.cs" />
     <Compile Include="SalesmanSolvers\SimulatedAnnealing.cs" />
